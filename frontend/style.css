@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  width: 50%;
+  height: 100%;
+}
+
+#speedContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+}
