@@ -2,7 +2,6 @@ body {
   background-color: black;
   color: white;
   font-family: 'Share Tech Mono', monospace;
-  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,11 +10,32 @@ body {
 #container {
   width: 50%;
   height: 100%;
+  text-align: center;
+  position: relative;
 }
 
 #speedContainer {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+}
 
+.trackText {
+  color: #26CC16;
+  font-size: 30px;
+}
+
+#trackValue {
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  top: -5px;
+  font-size: 35px;
+}
+
+#compassRing {
+  position: absolute;
+  top: 78.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

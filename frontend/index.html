@@ -10,16 +10,29 @@
 
 <body>
   <div id="container">
-    <div style="display: flex; flex-direction: row; gap: 50px;">
-      <div id="speedContainer">
-        <div style="font-size: 25px;">GS</div>
-        <div style="font-size: 30px" id="GSvalue">0</div>
+    <div style="display: grid; width: 100%; grid-template-columns: 1fr 1fr 1fr;">
+      <div style="display: flex; flex-direction: row; gap: 40px;">
+        <div id="speedContainer">
+          <div style="font-size: 25px;">GS</div>
+          <div style="font-size: 30px" id="GSvalue">0</div>
+        </div>
+        <div id="speedContainer">
+          <div style="font-size: 25px">TAS</div>
+          <div style="font-size: 30px" id="TASvalue">0</div>
+        </div>
       </div>
-      <div id="speedContainer">
-        <div style="font-size: 25px">TAS</div>
-        <div style="font-size: 30px" id="TASvalue">0</div>
+      <div style="display: flex; flex-direction: row; justify-content: center">
+        <div class="trackText">TRK</div>
+        <div id="trackValue">237</div>
+        <div class="trackText">MAG</div>
+      </div>
+      <div style="display: flex; flex-direction: column; font-size: 20px;">
+        <div class="legend">-------Z</div>
+        <div class="legend">---NM</div>
       </div>
     </div>
+    <img src="assets/compassRing.png" id="compassRing">
+    <img src="assets/compass.svg" style="height: 865px; width: auto;">
   </div>
 </body>
 
