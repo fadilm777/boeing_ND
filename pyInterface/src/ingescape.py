@@ -27,7 +27,8 @@ class IngescapeDelegate:
             "AMPS1": None,
             "AMPS2": None,
             "VOLTS1": None,
-            "VOLTS2": None
+            "VOLTS2": None,
+            "TAS": None
         }
 
         device = "Ethernet" 
