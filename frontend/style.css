@@ -40,7 +40,7 @@ body {
   font-size: 35px;
 }
 
-.compassRing {
+#compassRing {
   position: absolute;
   top: 76%;
   left: 50%;

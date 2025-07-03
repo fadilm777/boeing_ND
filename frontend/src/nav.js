@@ -16,6 +16,10 @@ export function infoMiddleware(method, data) {
   }
 }
 
+function updateTRKring(heading) {
+  const ring = document.getElementById("compassRing")
+  ring.style.transform = `translate(-50%, -50%) rotate(${heading})`
+}
 
 function updateNavInfo(data) {
   for (let i = 0; i < navItems.length; i++) {
@@ -23,7 +27,7 @@ function updateNavInfo(data) {
 
     const navItem = document.getElementById(`${navItemName}value`)
     if (navItem) {
-      if (navItemName == "TCAS") {
+      if (navItemName === "TCAS") {
         if (data["TCAS"] == 0) {
           navItem.textContent = "OFF"
         }
@@ -35,5 +39,9 @@ function updateNavInfo(data) {
         navItem.textContent = `${data[navItemName]}`
       }
     }
+  }
+
+  if ("TRK" in data) {
+    updateTRKring(data["TRK"])
   }
 }
