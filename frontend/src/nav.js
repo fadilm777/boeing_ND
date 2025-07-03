@@ -37,7 +37,7 @@ function updateNavInfo(data) {
       }
       else if (navItemName === "TRK") {
         updateTRKring(data["TRK"])
-        navItemName.textContent = `${data["TRK"].toFixed(0)}`
+        navItem.textContent = `${data["TRK"].toFixed(0)}`
       }
       else {
         navItem.textContent = `${data[navItemName]}`
