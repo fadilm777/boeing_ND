@@ -23,7 +23,18 @@ function updateNavInfo(data) {
 
     const navItem = document.getElementById(`${navItemName}value`)
     if (navItem) {
+      if navItemName == "TCAS" {
+      	if data["TCAS"] == 0 {
+		navItem.textContent = "OFF"
+	}
+	else {
+		navItem.textContent = "ON"
+	}
+      }
+      else {
+	      console.log("hello")
       navItem.textContent = `${data[navItemName]}`
-    }
+      }
+   }
   }
 }
