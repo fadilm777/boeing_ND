@@ -6,18 +6,28 @@ class IngescapeDelegate:
     def __init__(self) -> None:
 
         self.aircraft_location = {
-        #     "altitude": None,
-        #     "latitude": None,
-        #     "longitude": None,
-        #     "heading": None,
+            "altitude": None,
+            "latitude": None,
+            "longitude": None,
+            "heading": None,
         }
 
         self.aircraft_nav = {
             "GS": None,
-            "TAS": None,
-            "TCAS": None,
-            "MAGTRK": None,
-            "heading": None
+            "DTK": None,
+            "TRK": None,
+            "N1": None,
+            "N2": None,
+            "EGT": None,
+            "DIFF PSI": None,
+            "ALT FT": None,
+            "OIL PSI": None,
+            "OIL C": None,
+            "FLAPS": None,
+            "AMPS1": None,
+            "AMPS2": None,
+            "VOLTS1": None,
+            "VOLTS2": None
         }
 
         device = "Ethernet" 
@@ -69,4 +79,7 @@ class IngescapeDelegate:
             self.aircraft_location[name] = value
 
         if name in self.aircraft_nav:
-            self.aircraft_nav[name] = value
+            if name == "ALT FT":
+                self.aircraft_nav[name] = (value // 50) * 50
+            else:
+                self.aircraft_nav[name] = value

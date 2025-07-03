@@ -22,14 +22,14 @@ class Navigator:
 
         while True:
 
-            # locationMessage = {
-            #     "request": {
-            #         "method": "PUT",
-            #         "type": "location"
-            #     },
-            #     "body": aircraft_location 
-            # }
-            # await websocket.send(json.dumps(locationMessage)) # send location
+            locationMessage = {
+                "request": {
+                    "method": "PUT",
+                    "type": "location"
+                },
+                "body": aircraft_location 
+            }
+            await websocket.send(json.dumps(locationMessage)) # send location
 
             navInfoMessage = {
                 "request": {

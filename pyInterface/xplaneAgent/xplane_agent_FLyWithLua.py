@@ -35,15 +35,25 @@ def start_udp_listener(sock):
         try:
             data, _ = sock.recvfrom(1024)
             decoded_data = data.decode().strip()
-            GS, TAS, MAGTRK, TCAS, heading= map(float, decoded_data.split(","))
+            x, y, z, GS, DTK, TRK, N1, N2, EGT, DIFF_PSI, ALT_FT, OIL_PSI, OIL_C, FLAPS = map(float, decoded_data.split(","))
 
-            ground_speed, tas, magtrk, tcas, heading = GS, TAS, MAGTRK, TCAS, heading
+            latitude, longitude, heading, ground_speed, dtk, trk, n1, n2, egt, diff_psi, alt_ft, oil_psi, oil_c, flaps = x,y,z,GS,DTK,TRK,N1,N2,EGT,DIFF_PSI,ALT_FT,OIL_PSI,OIL_C,FLAPS
+            
             # Update Ingescape outputs
-            igs.output_set_double("ground speed", ground_speed)
-            igs.output_set_double("TAS", tas)
-            igs.output_set_double("magnetic track", magtrk)
-            igs.output_set_double("TCAS", tcas)
+            igs.output_set_double("latitude", latitude)
+            igs.output_set_double("longitude", longitude)
             igs.output_set_double("heading", heading)
+            igs.output_set_double("GS", ground_speed)
+            igs.output_set_double("DTK", dtk)
+            igs.output_set_double("TRK", trk)
+            igs.output_set_double("N1", n1)
+            igs.output_set_double("N2", n2)
+            igs.output_set_double("EGT", egt)
+            igs.output_set_double("DIFF PSI", diff_psi)
+            igs.output_set_double("ALT FT", alt_ft)
+            igs.output_set_double("OIL PSI", oil_psi)
+            igs.output_set_double("OIL C", oil_c)
+            igs.output_set_double("FLAPS", flaps)
             
         except Exception as e:
             print("Error while receiving or processing data:", e)
@@ -59,12 +69,20 @@ if __name__ == "__main__":
     igs.log_set_console_level(igs.LOG_INFO)
 
     # Define outputs
-
-    igs.output_create("ground speed", igs.DOUBLE_T, None)
-    igs.output_create("TAS", igs.DOUBLE_T, None)
-    igs.output_create("magnetic track", igs.DOUBLE_T, None)
-    igs.output_create("TCAS", igs.DOUBLE_T, None)
+    igs.output_create("latitude", igs.DOUBLE_T, None)
+    igs.output_create("longitude", igs.DOUBLE_T, None)
     igs.output_create("heading", igs.DOUBLE_T, None)
+    igs.output_create("GS", igs.DOUBLE_T, None)
+    igs.output_create("DTK", igs.DOUBLE_T, None)
+    igs.output_create("TRK", igs.DOUBLE_T, None)
+    igs.output_create("N1", igs.DOUBLE_T, None)
+    igs.output_create("N2", igs.DOUBLE_T, None)
+    igs.output_create("EGT", igs.DOUBLE_T, None)
+    igs.output_create("DIFF PSI", igs.DOUBLE_T, None)
+    igs.output_create("ALT FT", igs.DOUBLE_T, None)
+    igs.output_create("OIL PSI", igs.DOUBLE_T, None)
+    igs.output_create("OIL C", igs.DOUBLE_T, None)
+    igs.output_create("FLAPS", igs.DOUBLE_T, None)
 
     # Start Ingescape agent
     igs.start_with_device(device, port)
