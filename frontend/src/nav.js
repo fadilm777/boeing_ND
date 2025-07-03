@@ -35,13 +35,13 @@ function updateNavInfo(data) {
           navItem.textContent = "ON"
         }
       }
+      else if (navItemName === "TRK") {
+        updateTRKring(data["TRK"])
+        navItemName.textContent = `${data["TRK"].toFixed(0)}`
+      }
       else {
         navItem.textContent = `${data[navItemName]}`
       }
     }
-  }
-
-  if ("TRK" in data) {
-    updateTRKring(data["TRK"])
   }
 }
