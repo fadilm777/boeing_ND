@@ -7,6 +7,13 @@ body {
   justify-content: center;
 }
 
+.blocker {
+  width: 25%;
+  height: 100vh;
+  z-index: 999;
+  background: black;
+}
+
 #container {
   width: 50%;
   height: 100%;
@@ -33,9 +40,71 @@ body {
   font-size: 35px;
 }
 
-#compassRing {
+.compassRing {
   position: absolute;
-  top: 78.5%;
+  top: 76%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.innerCompassRing {
+  position: absolute;
+  top: 76%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#leftInfo {
+  position: absolute;
+  left: 0%;
+  top: 65%;
+  font-size: 18px;
+  color: #008B8B;
+  font-weight: bold;
+}
+
+
+#TCAS {
+  position: absolute;
+  left: 0%;
+  top: 77%;
+  font-size: 28px;
+  color: #FFD700;
+}
+
+#VORvalue {
+  position: absolute;
+  left: 0%;
+  top: 86%;
+  font-size: 28px;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+}
+
+#DMEvalue {
+  position: absolute;
+  left: 0%;
+  top: 92%;
+  font-size: 28px;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+}
+
+
+#VORvalue2 {
+  position: absolute;
+  right: 0%;
+  top: 86%;
+  font-size: 28px;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+}
+
+#DMEvalue2 {
+  position: absolute;
+  right: 0%;
+  top: 92%;
+  font-size: 28px;
+  color: #FFD700;
+  border: 2px solid #FFD700;
 }

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <div class="blocker"></div>
   <div id="container">
     <div style="display: grid; width: 100%; grid-template-columns: 1fr 1fr 1fr;">
       <div style="display: flex; flex-direction: row; gap: 40px;">
@@ -31,9 +32,23 @@
         <div class="legend">---NM</div>
       </div>
     </div>
-    <img src="assets/compassRing.png" id="compassRing">
-    <img src="assets/compass.svg" style="height: 865px; width: auto;">
+    <img src="assets/compassRing.png" class="compassRing">
+    <img src="assets/compass.svg" style="height: 800px; width: auto;">
+    <img src="assets/innerRings.png" class="innerCompassRing" style="height: 900px; width: auto;">
+    <div id="leftInfo">
+      <div>ARPT</div>
+      <div>STA</div>
+    </div>
+    <div id="TCAS">
+      <div>TCAS</div>
+      <div id="TCASvalue" style="left: 0%;">OFF</div>
+    </div>
+    <div id="VORvalue">VOR 1</div>
+    <div id="DMEvalue">DME 1</div>
+    <div id="VORvalue2">VOR 2</div>
+    <div id="DMEvalue2">DME 2</div>
   </div>
+  <div class="blocker"></div>
 </body>
 
 </html>
