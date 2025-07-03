@@ -2,7 +2,7 @@ import { FrameRateService } from './services.js'
 
 let rateHandler = new FrameRateService(30)
 
-const navItems = ["GS", "TAS", "TCAS", "MAGTRK", "heading"]
+const navItems = ["GS", "TAS", "TCAS", "TRK", "heading"]
 
 // export function locationMiddleware(method, data) {
 //   if (method === "PUT") {
