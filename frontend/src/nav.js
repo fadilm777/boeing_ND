@@ -18,7 +18,7 @@ export function infoMiddleware(method, data) {
 
 function updateTRKring(heading) {
   const ring = document.getElementById("compassRing")
-  ring.style.transform = `translate(-50%, -50%) rotate(${heading}deg)`
+  ring.style.transform = `translate(-50%, -50%) rotate(${-heading}deg)`
 }
 
 function updateNavInfo(data) {
