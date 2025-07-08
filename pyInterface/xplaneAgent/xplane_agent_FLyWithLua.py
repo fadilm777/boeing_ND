@@ -35,9 +35,9 @@ def start_udp_listener(sock):
         try:
             data, _ = sock.recvfrom(1024)
             decoded_data = data.decode().strip()
-            x, y, z, GS, DTK, TRK, N1, N2, EGT, DIFF_PSI, ALT_FT, OIL_PSI, OIL_C, FLAPS, TAS, TCAS = map(float, decoded_data.split(","))
+            x, y, z, GS, DTK, TRK, N1, N2, EGT, DIFF_PSI, ALT_FT, OIL_PSI, OIL_C, FLAPS, TAS, TCAS, RNP, ANP = map(float, decoded_data.split(","))
 
-            latitude, longitude, heading, ground_speed, dtk, trk, n1, n2, egt, diff_psi, alt_ft, oil_psi, oil_c, flaps, tas, tcas = x,y,z,GS,DTK,TRK,N1,N2,EGT,DIFF_PSI,ALT_FT,OIL_PSI,OIL_C,FLAPS,TAS,TCAS
+            latitude, longitude, heading, ground_speed, dtk, trk, n1, n2, egt, diff_psi, alt_ft, oil_psi, oil_c, flaps, tas, tcas, rnp, anp = x,y,z,GS,DTK,TRK,N1,N2,EGT,DIFF_PSI,ALT_FT,OIL_PSI,OIL_C,FLAPS,TAS,TCAS,RNP,ANP
             
             # Update Ingescape outputs
             igs.output_set_double("latitude", latitude)
@@ -56,6 +56,8 @@ def start_udp_listener(sock):
             igs.output_set_double("FLAPS", flaps)
             igs.output_set_double("TAS", tas)
             igs.output_set_double("TCAS", tcas)
+            igs.output_set_double("RNP", rnp)
+            igs.output_set_double("ANP", anp)
             
         except Exception as e:
             print("Error while receiving or processing data:", e)
@@ -87,6 +89,8 @@ if __name__ == "__main__":
     igs.output_create("FLAPS", igs.DOUBLE_T, None)
     igs.output_create("TAS", igs.DOUBLE_T, None)
     igs.output_create("TCAS", igs.DOUBLE_T, None)
+    igs.output_create("RNP", igs.DOUBLE_T, None)
+    igs.output_create("ANP", igs.DOUBLE_T, None)
 
     # Start Ingescape agent
     igs.start_with_device(device, port)
