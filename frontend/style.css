@@ -118,3 +118,18 @@ body {
   left: 50%;
   top: 81%;
 }
+
+#NP {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  position: absolute;
+  left: 41%;
+  top: 90%;
+  color: #FFD700;
+}
+
+/* .NPitem { */
+/**/
+/* } */
