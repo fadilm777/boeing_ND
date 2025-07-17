@@ -18,6 +18,9 @@ dataref("OIL_C",  "sim/cockpit2/engine/indicators/oil_temperature_deg_C", "reado
 dataref("TAS", "sim/flightmodel/position/true_airspeed", "readonly")
 dataref("TCAS", "sim/cockpit2/EFIS/EFIS_tcas_on", "readonly")
 dataref("FLAPS",  "sim/aircraft/limits/red_hi_bat_amp", "readonly")
+dataref("COURSE", "laminar/B738/autopilot/course_pilot", "writable")
+dataref("override_gps", "sim/operation/override/override_gps", "writable")
+COURSE = 69
 -- UDP configuration
 local udp_ip = "127.0.0.1"  -- Target IP (localhost)
 local udp_port = 5005       -- Target port
@@ -45,9 +48,10 @@ function send_position_data()
     local flaps = FLAPS
     local tcas = TCAS
     local tas = TAS
+    local course = COURSE
 
     -- Format the message as "X,Y,Z"
-    local message = string.format("%.7f,%.7f,%.7f,%.0f,%.0f,%.7f,%.1f,%.1f,%.0f,%.1f,%.0f,%.0f,%.0f,%.7f,%.0f,%.0f",
+    local message = string.format("%.7f,%.7f,%.7f,%.0f,%.0f,%.7f,%.1f,%.1f,%.0f,%.1f,%.0f,%.0f,%.0f,%.7f,%.0f,%.0f,%.0f",
                                   x,
                                   y, 
                                   z, 
@@ -62,7 +66,8 @@ function send_position_data()
                                   oil_c,
                                   flaps * 35,
                                   (tas * 1.94384),
-                                  tcas) 
+                                  tcas,
+                                  course) 
 
     -- Send the message via UDP
     udp:send(message)
@@ -128,8 +133,9 @@ function send_position_data()
         local flaps = FLAPS
         local tcas = TCAS
         local tas = TAS
+        local course = COURSE
 
-    local message = string.format("%.7f,%.7f,%.7f,%.0f,%.0f,%.7f,%.1f,%.1f,%.0f,%.1f,%.0f,%.0f,%.0f,%.7f,%.0f,%.0f",
+    local message = string.format("%.7f,%.7f,%.7f,%.0f,%.0f,%.7f,%.1f,%.1f,%.0f,%.1f,%.0f,%.0f,%.0f,%.7f,%.0f,%.0f,%.0f",
                                   x,
                                   y, 
                                   z, 
@@ -144,7 +150,8 @@ function send_position_data()
                                   oil_c, 
                                   flaps * 35,
                                   (tas * 1.94384),
-                                   tcas) 
+                                   tcas,
+                                   course) 
 
         -- Send the message via UDP
         udp:send(message)
