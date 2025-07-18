@@ -5,7 +5,8 @@ from websockets.asyncio.server import serve
 from src.ingescape import IngescapeDelegate
 
 class Navigator:
-    """Navigator class to handle aircraft data communication"""
+    """Navigator class to send aircraft data to frontend
+    using Websockets"""
 
     def __init__(self, ingescapeDelegate: IngescapeDelegate) -> None:
         self.ingescapeDelegate = ingescapeDelegate

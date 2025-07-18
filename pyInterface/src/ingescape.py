@@ -31,7 +31,11 @@ class IngescapeDelegate:
             "TAS": None,
             "TCAS": None,
             "RNP": None,
-            "ANP": None
+            "ANP": None,
+        }
+
+        self.controllers = {
+            "course": None
         }
 
         device = "Ethernet" 
@@ -71,6 +75,10 @@ class IngescapeDelegate:
             igs.input_create(nav_item, igs.DOUBLE_T, None)
             igs.observe_input(nav_item, self.input_callback, None)
 
+        for controller in self.controllers:
+            igs.input_create(controller, igs.DOUBLE_T, None)
+            igs.observe_input(controller, self.input_callback, None)
+
         # Start agent
         igs.start_with_device(device, port)
 
@@ -87,3 +95,6 @@ class IngescapeDelegate:
                 self.aircraft_nav[name] = (value // 50) * 50
             else:
                 self.aircraft_nav[name] = value
+
+        if name in self.controllers:
+            self.controllers[name] = value
