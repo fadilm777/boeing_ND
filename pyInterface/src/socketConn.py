@@ -1,5 +1,6 @@
 import socket
 import json
+import copy
 
 from ingescape import IngescapeDelegate
 
@@ -21,16 +22,13 @@ class UDPsender:
 
     def start_service(self) -> None:
         controllers = self.ingescapeDelegate.controllers
+        old_message = {}
 
         while True:
-            message = controllers
-            encoded_message = json.dumps(message).encode('utf-8')
+            if controllers != old_message:
+                message = controllers
+                encoded_message = json.dumps(message).encode('utf-8')
 
-            assert self.sock is not None
-            self.sock.sendto(encoded_message, (self.IP, self.port))
-
-
-
-
-
-
+                assert self.sock is not None
+                self.sock.sendto(encoded_message, (self.IP, self.port))
+                old_message = copy.deepcopy(message)
