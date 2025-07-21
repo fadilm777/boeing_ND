@@ -4,7 +4,6 @@ import sys
 class IngescapeDelegate:
 
     def __init__(self) -> None:
-
         self.aircraft_location = {
             "altitude": None,
             "latitude": None,
@@ -38,6 +37,9 @@ class IngescapeDelegate:
             "course": None
         }
 
+        self._init_igs(start=True)
+
+    def _init_igs(self, start) -> None:
         device = "Ethernet" 
         port = 5670
 
@@ -80,7 +82,8 @@ class IngescapeDelegate:
             igs.observe_input(controller, self.input_callback, None)
 
         # Start agent
-        igs.start_with_device(device, port)
+        if start:
+            igs.start_with_device(device, port)
 
 
     def input_callback(self, *args):

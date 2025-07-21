@@ -21,27 +21,34 @@ function updateTRKring(heading) {
   ring.style.transform = `translate(-50%, -50%) rotate(${-heading}deg)`
 }
 
-function updateNavInfo(data) {
-  for (let i = 0; i < navItems.length; i++) {
-    const navItemName = navItems[i]
-
-    const navItem = document.getElementById(`${navItemName}value`)
-    if (navItem) {
-      if (navItemName === "TCAS") {
-        if (data["TCAS"] == 0) {
-          navItem.textContent = "OFF"
-        }
-        else {
-          navItem.textContent = "ON"
-        }
-      }
-      else if (navItemName === "TRK") {
-        updateTRKring(data["TRK"])
-        navItem.textContent = `${data["TRK"].toFixed(0)}`
-      }
-      else {
-        navItem.textContent = `${data[navItemName]}`
-      }
-    }
+function updateTCAS(value, navItem) {
+  if (value == 0) {
+    navItem.textContent = "OFF"
   }
+  else {
+    navItem.textContent = "ON"
+  }
+}
+
+function updateNavItem(navItem, navItemName, value) {
+  if (navItemName === "TCAS") {
+    updateTCAS(value, navItem)
+  }
+  else if (navItemName === "TRK") {
+    updateTRKring(value)
+    navItem.textContent = `${value.toFixed(0)}`
+  }
+  else {
+    navItem.textContent = `${value}`
+  }
+}
+
+function updateNavInfo(data) {
+  Object.keys(data).forEach(navItemName => {
+    const navItem = document.getElementById(`${navItemName}value`)
+
+    if (navItem) {
+      updateNavItem(navItem, navItemName, data[navItemName])
+    }
+  })
 }
