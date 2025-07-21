@@ -10,10 +10,10 @@ if __name__ == "__main__":
     nav = Navigator(igs)
     sender = UDPsender(igs, ip='127.0.0.1', port=7070)
 
-    service1 = threading.Thread(target=nav.start_server)
-    service2 = threading.Thread(target=sender.start_service)
+    # Start UDP sender in a different thread for non-blocking operation
+    sender_thread = threading.Thread(target=sender.start_service)
+    sender_thread.start() # Will run forever
 
-    service1.start()
-    service2.start()
+    nav.start_server() # Will run forever
 
 
