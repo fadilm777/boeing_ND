@@ -1,4 +1,4 @@
-from multiprocessing import Process
+import threading
 
 from src.socketConn import UDPsender
 from src.ingescape import IngescapeDelegate 
@@ -10,10 +10,10 @@ if __name__ == "__main__":
     nav = Navigator(igs)
     sender = UDPsender(igs, ip='127.0.0.1', port=7070)
 
-    p1 = Process(target=nav.start_server)
-    p2 = Process(target=sender.start_service)
+    service1 = threading.Thread(target=nav.start_server)
+    service2 = threading.Thread(target=sender.start_service)
 
-    # These will run forever
-    p1.start() # Start navigator server
-    p2.start() # Start UDP sender service
+    service1.start()
+    service2.start()
+
 
