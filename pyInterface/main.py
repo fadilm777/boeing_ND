@@ -1,6 +1,6 @@
 from multiprocessing import Process
 
-from socketConn import UDPsender
+from src.socketConn import UDPsender
 from src.ingescape import IngescapeDelegate 
 from src.plane import Navigator
 
