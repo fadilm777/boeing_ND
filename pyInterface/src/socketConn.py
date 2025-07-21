@@ -25,10 +25,9 @@ class UDPsender:
         old_message = {}
 
         while True:
-            if controllers != old_message:
-                message = controllers
-                encoded_message = json.dumps(message).encode('utf-8')
+            message = "hello"
+            encoded_message = message.encode()
 
-                assert self.sock is not None
-                self.sock.sendto(encoded_message, (self.IP, self.port))
-                old_message = copy.deepcopy(message)
+            assert self.sock is not None
+            self.sock.sendto(encoded_message, (self.IP, self.port))
+            # old_message = copy.deepcopy(message)
