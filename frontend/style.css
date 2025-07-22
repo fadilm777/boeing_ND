@@ -109,7 +109,6 @@ body {
   border: 2px solid #FFD700;
 }
 
-
 #triangle {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -130,6 +129,10 @@ body {
   color: #FFD700;
 }
 
-/* .NPitem { */
-/**/
-/* } */
+#rollLine {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transform-origin: center bottom;
+  left: 50%;
+  top: 66%;
+}
