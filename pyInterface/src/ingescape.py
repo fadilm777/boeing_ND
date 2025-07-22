@@ -9,6 +9,7 @@ class IngescapeDelegate:
             "latitude": None,
             "longitude": None,
             "heading": None,
+            "roll": None
         }
 
         self.aircraft_nav = {
@@ -34,7 +35,9 @@ class IngescapeDelegate:
         }
 
         self.controllers = {
-            "course": None
+            "courseDial": None,
+            "altitudeDial": None,
+            "headingDial": None
         }
 
         self._init_igs(start=True)
