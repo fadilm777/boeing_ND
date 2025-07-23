@@ -1,19 +1,33 @@
-import { FrameRateService } from './services.js'
-
-let rateHandler = new FrameRateService(30)
-
-const navItems = ["GS", "TAS", "TCAS", "TRK", "heading"]
-
-// export function locationMiddleware(method, data) {
-//   if (method === "PUT") {
-//     updateLocation(data.latitude, data.longitude, data.heading)
-//   }
-// }
+import { locationServices } from "./services"
 
 export function infoMiddleware(method, data) {
   if (method === "PUT") {
     updateNavInfo(data)
   }
+}
+
+export function locationMiddleware(method, data) {
+  if (method === "PUT") {
+    updateLocation(data)
+  }
+}
+
+function updateNavInfo(data) {
+  Object.keys(data).forEach(navItemName => {
+    const navItem = document.getElementById(`${navItemName}value`)
+
+    if (navItem) {
+      updateNavItem(navItem, navItemName, data[navItemName])
+    }
+  })
+}
+
+function updateLocation(data) {
+  Object.keys(data).forEach(locationItem => {
+    if (locationItem in locationServices) {
+      locationServices[locationItem](data[locationItem])
+    }
+  })
 }
 
 function updateTRKring(heading) {
@@ -43,12 +57,3 @@ function updateNavItem(navItem, navItemName, value) {
   }
 }
 
-function updateNavInfo(data) {
-  Object.keys(data).forEach(navItemName => {
-    const navItem = document.getElementById(`${navItemName}value`)
-
-    if (navItem) {
-      updateNavItem(navItem, navItemName, data[navItemName])
-    }
-  })
-}
