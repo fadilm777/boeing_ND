@@ -5,12 +5,21 @@ local socket = require("socket")
 dataref("override_gps", "sim/operation/override/override_gps", "writable")
 dataref("COURSE", "laminar/B738/autopilot/course_pilot", "writable")
 dataref("COURSE_CO", "laminar/B738/autopilot/course_copilot", "writable")
-
+dataref("HEADING", "laminar/B738/autopilot/mcp_hdg_dial", "writable")
+dataref("ALTITUDE", "laminar/B738/autopilot/mcp_alt_dial", "writable")
 
 local controllers = {
-	course = function(val)
+	courseDial = function(val)
 		COURSE = val
 		COURSE_CO = val
+	end,
+
+	headingDial = function(val)
+		HEADING = val
+	end,
+
+	altitudeDial = function(val)
+		ALTITUDE = val
 	end,
 }
 
