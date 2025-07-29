@@ -1,6 +1,5 @@
 export function geoVectorNM(heading, lat1, lon1, lat2, lon2) {
   const toRad = deg => (deg * Math.PI) / 180;
-  const toDeg = rad => (rad * 180) / Math.PI;
 
   // Convert degrees to radians
   const phi1 = toRad(lat1);
@@ -37,6 +36,6 @@ export function geoVectorNM(heading, lat1, lon1, lat2, lon2) {
   const xRot = vectorX * cosA - vectorY * sinA;
   const yRot = vectorX * sinA + vectorY * cosA;
 
-  return { x: xRot, y: yRot }
+  return { distance: distance, x: xRot, y: yRot }
 }
 

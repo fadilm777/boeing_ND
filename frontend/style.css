@@ -136,3 +136,15 @@ body {
   left: 50%;
   top: 66%;
 }
+
+.navPoint {
+  display: none;
+  position: absolute;
+  left: 75%;
+  top: 75%;
+}
+
+.navPointLabel {
+  color: #31AFF3;
+  font-weight: bold;
+}

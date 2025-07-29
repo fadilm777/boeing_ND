@@ -1,4 +1,4 @@
-import { locationServices } from "./services"
+import { locationServices } from "./services.js"
 
 export function infoMiddleware(method, data) {
   if (method === "PUT") {
