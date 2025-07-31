@@ -19,18 +19,21 @@ function isNavPointInRange(distance, yVec) {
 }
 
 export function navpointService(position) {
-  let distance, xVec, yVec = 0
+  let geoVector = {}
 
   if (NavPoints) {
     for (let navpoint of NavPoints) {
-      distance, xVec, yVec = geoVectorNM(position.heading,
+      geoVector = geoVectorNM(position.heading,
         position.latitude,
         position.longitude,
         navpoint.coordinates[1],
         navpoint.coordinates[0])
+      //console.log(geoVector.distance, geoVector.y)
 
-      if (isNavPointInRange(distance, yVec)) {
-        displayNavPoint(xVec, yVec, navpoint.name)
+      if (isNavPointInRange(geoVector.distance, geoVector.y)) {
+        displayNavPoint(geoVector.x, geoVector.y, navpoint.name)
+      } else {
+        hideNavPoint(navpoint.name)
       }
     }
   }
@@ -59,7 +62,13 @@ export function renderNavPoints(navpoints) {
 function displayNavPoint(xVec, yVec, navpointName) {
   const navpointDiv = document.getElementById(navpointName)
 
-  navpointDiv.stlye.display = "block"
+  navpointDiv.style.display = "block"
   navpointDiv.style.top = `${Math.round(-3.04 * yVec + 71.2)}%`
-  navpointDiv.style.left = `${Math.round(1.85 * xVec + 50.25)}%`
+  navpointDiv.style.left = `${Math.round(1.85 * xVec + 49.50)}%`
+}
+
+function hideNavPoint(navpointName) {
+  const navpointDiv = document.getElementById(navpointName)
+
+  navpointDiv.style.display = "none"
 }

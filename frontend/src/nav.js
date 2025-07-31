@@ -1,4 +1,4 @@
-import { locationServices } from "./services.js"
+import { locationServices, navpointService } from "./services.js"
 
 export function infoMiddleware(method, data) {
   if (method === "PUT") {
@@ -9,6 +9,9 @@ export function infoMiddleware(method, data) {
 export function locationMiddleware(method, data) {
   if (method === "PUT") {
     updateLocation(data)
+    navpointService({latitude: data.latitude, 
+                      longitude: data.longitude,
+                      heading: data.heading})
   }
 }
 
